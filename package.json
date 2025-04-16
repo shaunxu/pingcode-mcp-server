@@ -1,0 +1,38 @@
+{
+  "name": "pingcode-mcp-server",
+  "version": "1.0.0",
+  "description": "PingCode's MCP Server",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shaunxu/pingcode-mcp-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/shaunxu/pingcode-mcp-server/issues"
+  },
+  "homepage": "https://github.com/shaunxu/pingcode-mcp-server#readme",
+  "devDependencies": {
+    "@types/node": "^22.14.1",
+    "@types/node-fetch": "^2.6.12",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.9.0",
+    "node-fetch": "^3.3.2",
+    "zod": "^3.24.2"
+  },
+  "bin": {
+    "mcp-server-pingcode": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ]
+}
