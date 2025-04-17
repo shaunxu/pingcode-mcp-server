@@ -1,6 +1,6 @@
 {
   "name": "@shaunxu/pingcode-mcp-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "PingCode's MCP Server",
   "main": "index.js",
   "scripts": {
