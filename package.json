@@ -4,7 +4,8 @@
   "description": "PingCode's MCP Server",
   "main": "index.js",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc && shx chmod +x dist/index.js",
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
   "devDependencies": {
     "@types/node": "^22.14.1",
     "@types/node-fetch": "^2.6.12",
+    "shx": "^0.4.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   },
