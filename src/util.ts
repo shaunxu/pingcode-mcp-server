@@ -1,4 +1,4 @@
-import fetch from "node-fetch";
+import fetch, { RequestInit } from "node-fetch";
 import { join } from "node:path";
 
 const BASE_URL = process.env.PINGCODE_OPEN_API_ENDPOINT || "";
@@ -36,28 +36,51 @@ async function requestRaw(info: RequestInfo): Promise<any> {
     for (const name in info.params) {
         url.searchParams.append(name, info.params[name]);
     }
-    const response = await fetch(url.href, {
+    const init: RequestInit = {
         method: info.method,
         body: info.body,
         headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${access_token}`
         }
-    });
+    };
+    console.error("fetch", { url: url.href, ...init });
+    const response = await fetch(url.href, init);
     return response.json();
 }
 
-export async function request(info: RequestInfo): Promise<any> {
+export interface RequestResultContent {
+
+    [x: string]: unknown;
+
+    type: "text",
+
+    text: string;
+
+}
+
+export interface RequestResult {
+
+    [x: string]: unknown;
+
+    content: [RequestResultContent];
+
+}
+
+export async function request(info: RequestInfo): Promise<RequestResult> {
     if (!access_token) {
         await auth();
     }
 
-    const response = await requestRaw(info);
+    let response = await requestRaw(info);
     if (response.code === "100028") {
         await auth();
-        return requestRaw(info);
+        response = requestRaw(info);
     }
-    else {
-        return response;
-    }
+    return {
+        content: [{
+            type: "text",
+            text: JSON.stringify(response)
+        }]
+    };
 }

@@ -1,6 +1,6 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { Directory } from "./toolsets";
+import { ToolsetDirectory, ToolsetProjectWorkitem } from "./toolsets";
 
 const server = new McpServer({
     name: "pingcode-mcp-server",
@@ -12,7 +12,8 @@ const server = new McpServer({
 });
 
 [
-    new Directory()
+    new ToolsetDirectory(),
+    new ToolsetProjectWorkitem(),
 ].forEach(x => x.register(server));
 
 async function main() {
