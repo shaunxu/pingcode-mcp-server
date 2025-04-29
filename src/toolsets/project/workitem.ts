@@ -42,33 +42,33 @@ export class ToolsetProjectWorkitem implements Toolset {
             }
         );
 
-        server.tool(
-            "pingcode_get_workitem",
-            "当需要获取工作项详细信息的时候，调用此工具。",
-            {
-                "workitem_ID": z.string({
-                    description: "工作项 ID"
-                }),
-                "fields": z.string({
-                    description: "需要返回的字段，多个字段用逗号分隔"
-                }).optional()
-            },
-            async args => {
-                const params: Record<string, string> = {};
-                if (args.fields) params.fields = args.fields;
-                return request({
-                    method: "GET",
-                    path: `project/work_items/${args.workitem_ID}`, params
-                });
-            }
-        );
+        // server.tool(
+        //     "pingcode_get_workitem",
+        //     "当需要获取工作项详细信息的时候，调用此工具。",
+        //     {
+        //         "workitem_ID": z.string({
+        //             description: "工作项 ID"
+        //         }),
+        //         "fields": z.string({
+        //             description: "需要返回的字段，多个字段用逗号分隔"
+        //         }).optional()
+        //     },
+        //     async args => {
+        //         const params: Record<string, string> = {};
+        //         if (args.fields) params.fields = args.fields;
+        //         return request({
+        //             method: "GET",
+        //             path: `project/work_items/${args.workitem_ID}`, params
+        //         });
+        //     }
+        // );
 
         server.tool(
             "pingcode_get_workitems",
-            "当需要获取工作项列表的时候，调用此工具。",
+            "当需要获取工作项列表，或工作项详细信息的时候，调用此工具。",
             {
                 "identifier": z.string({
-                    description: "工作项编号"
+                    description: "工作项编号，以井号开头，例如用户输入#TINFR-1234，则编号为TINFR-1234。"
                 }).optional(),
                 "project_ids": z.string({
                     description: "项目的id，使用','分割，最多只能20个"

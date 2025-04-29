@@ -20,6 +20,18 @@ export class ToolsetDirectory implements Toolset {
         );
 
         server.tool(
+            "pingcode_get_current_user",
+            "当需要获取PingCode当前登录用户信息的时候，调用此工具。",
+            {},
+            async () => {
+                return request({
+                    method: "GET",
+                    path: "myself"
+                });
+            }
+        );
+
+        server.tool(
             "pingcode_get_team_members",
             "当需要获取企业成员列表，或者需要通过姓名查询某个成员ID的时候，调用此工具。",
             {
