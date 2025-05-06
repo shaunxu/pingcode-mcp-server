@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { ToolsetDirectory, ToolsetProjectWorkitem } from "./toolsets";
+import { ToolsetDirectory, ToolsetProjectWorkitem } from "./toolsets/index.js";
 
 const server = new McpServer({
     name: "pingcode-mcp-server",

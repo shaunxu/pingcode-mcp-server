@@ -1,8 +1,8 @@
 {
   "name": "pingcode-mcp-server",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "description": "PingCode's MCP Server",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc && shx chmod +x dist/index.js",
     "prepare": "npm run build",
@@ -17,7 +17,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/shaunxu/pingcode-mcp-server/issues"
   },

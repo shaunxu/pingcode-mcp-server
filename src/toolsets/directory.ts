@@ -1,7 +1,7 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
-import { Toolset } from "../toolset";
-import { request } from "../util";
+import { Toolset } from "../toolset.js";
+import { request } from "../util.js";
 
 export class ToolsetDirectory implements Toolset {
 
